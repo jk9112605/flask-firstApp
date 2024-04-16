@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 
 app = Flask(__name__, template_folder='templates')
 
@@ -8,10 +8,14 @@ def index():
     myList = [10, 20, 30, 40, 50]
     return render_template('index.html', myList=myList)
 
-@app.route('/abcdef')
+@app.route('/other')
 def other():
     some_text = "Hello World"
     return render_template('other.html', some_text=some_text)
+
+@app.route('/redirect_endpoint')
+def redirect_endpoint():
+    return redirect(url_for('other'))
 
 @app.template_filter('reverse_string')
 def reverse_string(s):
@@ -24,6 +28,7 @@ def repeat(s, times=2):
 @app.template_filter('alternate_case')
 def alternate_case(s):
     return ''.join([c.upper() if i%2==0 else c.lower() for i, c in enumerate(s)])
+ 
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
