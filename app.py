@@ -8,7 +8,7 @@ def index():
     return "<h1>Hello World</h1>"
 
 
-@app.route('/hello')
+@app.route('/hello', methods=['GET', 'POST'])
 def hello():
     return "Hello World"
 
@@ -31,6 +31,7 @@ def handle_params():
         return f'{greeting}, {name}'
     else:
         return 'Some parameters are missing'
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5555, debug=True)
