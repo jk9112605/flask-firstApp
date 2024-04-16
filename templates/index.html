@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Flask App</title>
 </head>
+
 <body>
     <h1>Hello World</h1>
+    <ul>
+        {% for item in myList %}
+            {% if item == 30 %}
+                <li style="color: red">{{ item }}</li>
+            {% else %}
+                <li>{{ item }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
     <p>{{ myList }}</p>
 </body>
+
 </html>
