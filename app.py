@@ -8,6 +8,9 @@ def index():
     myList = [10, 20, 30, 40, 50]
     return render_template('index.html', myList=myList)
 
+@app.route('/other')
+def other():
+    return render_template('other.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
