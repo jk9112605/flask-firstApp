@@ -25,7 +25,9 @@ def add(number1, number2):
 
 @app.route('/handle_url_params')
 def handle_params():
-    return str(request.args)
+    greeting = request.args['greeting']
+    name = request.args.get('name')
+    return f'{greeting}, {name}'
 
 
 if __name__ == '__main__':
