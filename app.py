@@ -10,7 +10,7 @@ def index():
 
 @app.route('/hello')
 def hello():
-    return 'Hello World\n', 404
+    return 'Hello World\n'
 
 
 @app.route('/greet/<name>')  #<name> is a variable
