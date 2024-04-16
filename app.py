@@ -5,9 +5,8 @@ app = Flask(__name__, template_folder='templates')
 
 @app.route('/')
 def index():
-    myvalue= 'NeuralNine'
-    myresult = 10 + 20
-    return render_template('index.html', myvalue=myvalue, myresult=myresult)
+    myList = [10, 20, 30, 40, 50]
+    return render_template('index.html', myList=myList)
 
 
 if __name__ == '__main__':
