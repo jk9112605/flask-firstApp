@@ -10,7 +10,12 @@ def index():
 
 @app.route('/hello', methods=['GET', 'POST'])
 def hello():
-    return "Hello World"
+    if request.method == 'GET':
+        return 'You made a GET request\n'
+    elif request.method == 'POST':
+        return 'You made a POST request\n'
+    else:
+        return 'You will never see this message\n'
 
 
 @app.route('/greet/<name>')  #<name> is a variable
