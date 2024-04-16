@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, make_response
 
 app = Flask(__name__)
 
@@ -10,7 +10,11 @@ def index():
 
 @app.route('/hello')
 def hello():
-    return 'Hello World\n'
+    response = make_response('Hello World\n')
+    response.status_code = 202
+    response.headers['content-type']="text/plain"
+    return response
+    
 
 
 @app.route('/greet/<name>')  #<name> is a variable
