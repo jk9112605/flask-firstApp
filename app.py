@@ -8,7 +8,7 @@ def index():
     myList = [10, 20, 30, 40, 50]
     return render_template('index.html', myList=myList)
 
-@app.route('/other')
+@app.route('/abcdef')
 def other():
     some_text = "Hello World"
     return render_template('other.html', some_text=some_text)
