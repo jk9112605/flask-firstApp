@@ -1,10 +1,32 @@
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def index():
     return "<h1>Hello World</h1>"
 
+
+@app.route('/hello')
+def hello():
+    return "Hello World"
+
+
+@app.route('/greet/<name>')  #<name> is a variable
+def greet(name):
+    return f"Hello {name}"
+
+
+@app.route('/add/<int:number1>/<int:number2>')
+def add(number1, number2):
+    return f'{number1}+{number2}={number1+number2}'
+
+
+@app.route('/handle_url_params')
+def handle_params():
+    return str(request.args)
+
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5555, debug=True) 
+    app.run(host='0.0.0.0', port=5555, debug=True)
