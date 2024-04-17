@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__, template_folder='templates')
 
@@ -27,6 +27,16 @@ def file_upload():
     elif file.content_type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' or file.content_type == 'application/vnd.ms-excel':
         return "this is excel file"
 
+@app.route('/handle_post', methods=['POST'])
+def handle_post():
+    greeting = request.json['greeting']
+    name = request.json['name']
+    
+    with open('file.txt', 'w') as f:
+        f.write(f'{greeting}, {name}')
+    
+    return jsonify({'message': 'Successfully written!'})
+        
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
